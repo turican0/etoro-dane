@@ -127,7 +127,7 @@ void parseCSV(char* file) {
             datavect.push_back(data);
         }
     }
-    datavect.pop_back();
+    //datavect.pop_back();
 };
 
 double ziskar[4];
@@ -136,7 +136,9 @@ double prodejar[4];
 
 int main()
 {
-    parseCSV((char*)"c:\\Users\\Veselý\\Downloads\\etoro-dane.csv");
+    //parseCSV((char*)"c:\\Users\\Veselý\\Downloads\\etoro-dane.csv");
+    parseCSV((char*)"c:\\Users\\tomas.vesely\\Downloads\\etoro-dane.csv");
+
     for (int i = 0; i < 4; i++)
     {
         ziskar[i] = 0;
@@ -149,9 +151,9 @@ int main()
         if (datavect[posi].napiste == "CFD")
         {
             datavect[posi].type = 1;//cfd
-            if ((datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " ETF") ||
+            /*if ((datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " ETF") ||
                 (datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd"))
-                datavect[posi].type = 3;//etf
+                datavect[posi].type = 3;//etf*/
         }
         else
         {
