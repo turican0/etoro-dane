@@ -219,11 +219,11 @@ int main()
         prodejar[datavect[posi].type] += datavect[posi].sazbauz * vypjednotka;
     }
 
-    std::cout << "Basic and ETF: zisk:" << ziskar[0] + ziskar[3] << " nak:" << nakupar[0] + nakupar[3] << " pro:" << prodejar[0] + prodejar[3] << "\n";
+    /*std::cout << "Basic and ETF: zisk:" << ziskar[0] + ziskar[3] << " nak:" << nakupar[0] + nakupar[3] << " pro:" << prodejar[0] + prodejar[3] << "\n";
     std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
     std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
     //std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
-
+    */
 
     nakupar[0] = prodejar[0] - ziskar[0];
     nakupar[1] = prodejar[1] - ziskar[1];
