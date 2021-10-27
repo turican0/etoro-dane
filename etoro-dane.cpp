@@ -209,14 +209,33 @@ int main()
 
         cout << datavect[posi].zisk << " t:" << datavect[posi].type << "\n";
 
+        double zisknaakcii = datavect[posi].sazbauz - datavect[posi].sazbaot;
+        double vypjednotka = 0;
+        if((datavect[posi].zisk!=0)&&(zisknaakcii!=0))
+            vypjednotka = datavect[posi].zisk / zisknaakcii;
+
         ziskar[datavect[posi].type] += datavect[posi].zisk;
-        nakupar[datavect[posi].type] += datavect[posi].sazbaot * datavect[posi].jednotky;
-        prodejar[datavect[posi].type] += datavect[posi].sazbauz * datavect[posi].jednotky;
+        nakupar[datavect[posi].type] += datavect[posi].sazbaot * vypjednotka;
+        prodejar[datavect[posi].type] += datavect[posi].sazbauz * vypjednotka;
     }
+
+    std::cout << "Basic and ETF: zisk:" << ziskar[0] + ziskar[3] << " nak:" << nakupar[0] + nakupar[3] << " pro:" << prodejar[0] + prodejar[3] << "\n";
+    std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
+    std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
+    //std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
+
+
+    nakupar[0] = prodejar[0] - ziskar[0];
+    nakupar[1] = prodejar[1] - ziskar[1];
+    nakupar[2] = prodejar[2] - ziskar[2];
+    nakupar[3] = prodejar[3] - ziskar[3];
+
     std::cout << "Basic and ETF: zisk:" << ziskar[0]+ ziskar[3] << " nak:" << nakupar[0]+ nakupar[3] << " pro:" << prodejar[0]+ prodejar[3] << "\n";
     std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
     std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
     //std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
+
+
 }
 
 // Spuštění programu: Ctrl+F5 nebo nabídka Ladit > Spustit bez ladění
