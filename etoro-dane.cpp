@@ -160,7 +160,8 @@ int main()
             if (datavect[posi].ISIN == "999999999")
                 datavect[posi].type = 2;//coin        
             if ((datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " ETF") ||
-                (datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd"))
+                /*(datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd")||*/
+                (datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " SPDR"))
                 datavect[posi].type = 3;//etf
         }
 
@@ -212,10 +213,10 @@ int main()
         nakupar[datavect[posi].type] += datavect[posi].sazbaot * datavect[posi].jednotky;
         prodejar[datavect[posi].type] += datavect[posi].sazbauz * datavect[posi].jednotky;
     }
-    std::cout << "Basic: zisk:" << ziskar[0] << " nak:" << nakupar[0] << " pro:" << prodejar[0] << "\n";
+    std::cout << "Basic and ETF: zisk:" << ziskar[0]+ ziskar[3] << " nak:" << nakupar[0]+ nakupar[3] << " pro:" << prodejar[0]+ prodejar[3] << "\n";
     std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
     std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
-    std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
+    //std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
 }
 
 // Spuštění programu: Ctrl+F5 nebo nabídka Ladit > Spustit bez ladění
