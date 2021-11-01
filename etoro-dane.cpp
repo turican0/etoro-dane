@@ -98,6 +98,7 @@ void parseCSV(char* file) {
                 //std::cout << token << std::endl;
                 replace(token, ",", ".");
                 replace(token, "\xa0", "");
+                replace(token, " ", "");
                 if (token == "")token = "999999999";
                 switch (index) {
                 case 0:data.identifikator = token; break;
@@ -217,6 +218,16 @@ int main()
         ziskar[datavect[posi].type] += datavect[posi].zisk;
         nakupar[datavect[posi].type] += datavect[posi].sazbaot * vypjednotka;
         prodejar[datavect[posi].type] += datavect[posi].sazbauz * vypjednotka;
+
+        /*if (abs(datavect[posi].sazbaot * vypjednotka -(datavect[posi].sazbauz * vypjednotka - datavect[posi].zisk))>0.005)
+        {
+            cout << datavect[posi].identifikator << " zisk:" << datavect[posi].zisk <<" : "<< datavect[posi].sazbaot * vypjednotka <<" : "<< datavect[posi].sazbauz * vypjednotka <<"\n";
+            exit(0);
+        }
+        else
+        {
+            cout << datavect[posi].sazbaot * vypjednotka <<" : "<< (datavect[posi].sazbauz * vypjednotka - datavect[posi].zisk) <<"\n";
+        }*/
     }
 
     /*std::cout << "Basic and ETF: zisk:" << ziskar[0] + ziskar[3] << " nak:" << nakupar[0] + nakupar[3] << " pro:" << prodejar[0] + prodejar[3] << "\n";
@@ -233,6 +244,7 @@ int main()
     std::cout << "Basic and ETF: zisk:" << ziskar[0]+ ziskar[3] << " nak:" << nakupar[0]+ nakupar[3] << " pro:" << prodejar[0]+ prodejar[3] << "\n";
     std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
     std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
+
     //std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
 
 
