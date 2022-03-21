@@ -1,0 +1,7 @@
+﻿  etoro-dane.cpp
+C:\prenos\etoro-dane\etoro-dane.cpp(149,29): warning C4018: <: signed/unsigned – neshoda
+  Vytváří se kód.
+  Previous IPDB not found, fall back to full compilation.
+  All 280 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Vytváření kódu se dokončilo.
+  etoro-dane.vcxproj -> C:\prenos\etoro-dane\Release\etoro-dane.exe

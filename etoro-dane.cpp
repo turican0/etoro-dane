@@ -157,14 +157,24 @@ int main()
                 datavect[posi].type = 3;//etf*/
         }
         else
-        {
+            if (datavect[posi].napiste == "ETF")
+            {
+                datavect[posi].type = 3;//cfd
+                /*if ((datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " ETF") ||
+                    (datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd"))
+                    datavect[posi].type = 3;//etf*/
+            }
+            else
+                if (datavect[posi].napiste == "Krypto")
+                datavect[posi].type = 2;//cfd
+        /* {
             if (datavect[posi].ISIN == "999999999")
                 datavect[posi].type = 2;//coin        
             if ((datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " ETF") ||
-                /*(datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd")||*/
+                //(datavect[posi].ukon.substr(datavect[posi].ukon.size() - 7) == "ETF usd")||
                 (datavect[posi].ukon.substr(datavect[posi].ukon.size() - 4) == " SPDR"))
                 datavect[posi].type = 3;//etf
-        }
+        }*/
 
         datavect[posi].nakup = datavect[posi].sazbaot * datavect[posi].jednotky;
         datavect[posi].prodej = datavect[posi].sazbauz * datavect[posi].jednotky;
@@ -209,7 +219,7 @@ int main()
         */
 
         cout << datavect[posi].zisk << " t:" << datavect[posi].type << "\n";
-
+        /*
         double zisknaakcii = datavect[posi].sazbauz - datavect[posi].sazbaot;
         double vypjednotka = 0;
         if((datavect[posi].zisk!=0)&&(zisknaakcii!=0))
@@ -217,7 +227,15 @@ int main()
 
         ziskar[datavect[posi].type] += datavect[posi].zisk;
         nakupar[datavect[posi].type] += datavect[posi].sazbaot * vypjednotka;
-        prodejar[datavect[posi].type] += datavect[posi].sazbauz * vypjednotka;
+        prodejar[datavect[posi].type] += datavect[posi].sazbauz * vypjednotka;*/
+
+        ziskar[datavect[posi].type] += datavect[posi].zisk;
+        nakupar[datavect[posi].type] += datavect[posi].castka;
+        prodejar[datavect[posi].type] += datavect[posi].castka+ datavect[posi].zisk;
+
+        cout << prodejar[datavect[posi].type] - nakupar[datavect[posi].type] << " ";
+
+        //ziskar[datavect[posi].type] += prodejar[datavect[posi].type]- nakupar[datavect[posi].type];
 
         /*if (abs(datavect[posi].sazbaot * vypjednotka -(datavect[posi].sazbauz * vypjednotka - datavect[posi].zisk))>0.005)
         {
@@ -241,7 +259,8 @@ int main()
     nakupar[2] = prodejar[2] - ziskar[2];
     nakupar[3] = prodejar[3] - ziskar[3];
 
-    std::cout << "Basic and ETF: zisk:" << ziskar[0]+ ziskar[3] << " nak:" << nakupar[0]+ nakupar[3] << " pro:" << prodejar[0]+ prodejar[3] << "\n";
+    std::cout <<"\n\n" << "Basic: zisk:" << ziskar[0] << " nak:" << nakupar[0] << " pro:" << prodejar[0] << "\n";
+    std::cout << "ETF: zisk:" << ziskar[3] << " nak:" << nakupar[3] << " pro:" << prodejar[3] << "\n";
     std::cout << "CFD: zisk:" << ziskar[1] << " nak:" << nakupar[1] << " pro:" << prodejar[1] << "\n";
     std::cout << "Krypt: zisk:" << ziskar[2] << " nak:" << nakupar[2] << " pro:" << prodejar[2] << "\n";
 
